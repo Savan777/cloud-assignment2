@@ -1,5 +1,4 @@
 #importing requried libraries
-import os
 import boto3
 from flask import Flask, request, jsonify, render_template
 
@@ -58,14 +57,6 @@ def get_song():
         except Exception as e:
             return(str(e))
     return render_template("searchSong.html")
-
-
-#allows user to listen to the song selected
-@app.route("/listen")
-def listen():
-	#get list of songs from music directory on server
-    songs = os.listdir("./static/music")
-    return render_template("music.html", songs=songs)
 
 #get feedback from from and store in feedback table
 @app.route("/feedback", methods=['GET','POST'])
