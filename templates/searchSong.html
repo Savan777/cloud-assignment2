@@ -1,0 +1,84 @@
+<!--This form takes a song name as input and displays its deatils fetched from the server -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Music Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href="/">Music Store</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="/addmusic/form">Add Song</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/getsong">Search Song</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/listen">Listen</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/feedback">Feedback</a>
+				</li> 
+			</ul>
+		</div>  
+	</nav>
+	<br>
+	
+    <div class="container">
+
+        <div class="container">
+            <br>
+            <br>
+
+            <div class="row align-items-center justify-content-center">
+                <h1>Search a Song for Deatils</h1>
+            </div>
+            <br>
+			<!--When form is submitted send name of song value to server and display values1-4 sent from server-->
+            <form method="POST">
+
+                <label for="song">Song Name</label>
+                <div class="form-row">
+                    <input class="form-control" type="text" placeholder="Name of song" id="song" name="song">
+                </div>
+                <br>
+				<button type="submit " class="btn btn-primary " style="float:right ">Search</button>
+				<br><br>
+				<p>Song ID: {{ value1 }}</p>
+				<br>
+				<p>Song Name: {{ value2 }}</p>
+				<br>
+				<p>Artist: {{ value3 }}</p>
+				<br>
+				<p>Year Published: {{ value4 }}</p>
+            </form>			
+            <br><br>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo "
+        crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js " integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 "
+        crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js " integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy "
+        crossorigin="anonymous "></script>
+</body>
+
+</html>

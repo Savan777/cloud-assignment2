@@ -1,0 +1,89 @@
+<!--This will create the feedback form page-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Music Store</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href="/">Music Store</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="/addmusic/form">Add Song</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/getsong">Search Song</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/listen">Listen</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/feedback">Feedback</a>
+				</li> 
+			</ul>
+		</div>  
+	</nav>
+	<br>
+
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+                <h1>Feedback</h1>
+            </div>
+			<br>
+	<!--If there is a error message then display it only in red color-->
+	{% if message %}
+		<p class="row align-items-center justify-content-center"><font color="red"><strong>{{ message | safe }}</strong></p>
+	{% endif %} 
+	
+  <form class="was-validated" method="POST">
+    <div class="form-group">
+      <label for="cname">Customer Name:</label>
+      <input type="text" class="form-control" id="cname" placeholder="First and Last Name" name="cname" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="form-group">
+      <label>Please Rate Your Experience:</label>
+	  <input type="radio" name="rating" value="1" required/> 1
+      <input type="radio" name="rating" value="2" /> 2
+      <input type="radio" name="rating" value="3" /> 3
+      <input type="radio" name="rating" value="4" /> 4
+      <input type="radio" name="rating" value="5" /> 5
+      <input type="radio" name="rating" value="6" /> 6
+      <input type="radio" name="rating" value="7" /> 7
+      <input type="radio" name="rating" value="8" /> 8
+      <input type="radio" name="rating" value="9" /> 9
+      <input type="radio" name="rating" value="10" /> 10
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="form-group">
+          <label>Comments About Your Experience:</label>
+		  <br>
+          <textarea
+            name="comments"
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Tell us what you liked and/or did not like"
+          ></textarea>
+        </div>
+    <button type="submit" class="btn btn-primary" style="float:left">Submit</button>
+  </form>
+</div>
+
+</body>
+</html>

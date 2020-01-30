@@ -1,0 +1,161 @@
+<!-- This form will add the song to the database table -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Music Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<!-- Styling the form with css -->
+	<style>
+		.overlay{
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: rgba(0, 0, 0, 0.7);
+			transition: opacity 500ms;
+			visibility: hidden;
+			opacity: 0;
+		}
+		
+		.overlay:target {
+			visibility: visible;
+			opacity: 1;
+		}
+
+		.popup {
+			margin: 70px auto;
+			padding: 20px;
+			background: #fff;
+			border-radius: 5px;
+			width: 30%;
+			position: relative;
+			transition: all 5s ease-in-out;
+		}
+
+		.popup h2 {
+			margin-top: 0;
+			color: #333;
+			font-family: Tahoma, Arial, sans-serif;
+		}
+		.popup .close {
+			position: absolute;
+			top: 20px;
+			right: 30px;
+			transition: all 200ms;
+			font-size: 30px;
+			font-weight: bold;
+			text-decoration: none;
+			color: #333;
+		}
+		.popup .close:hover {
+			color: #FF0000;
+		}
+		.popup .content {
+			max-height: 30%;
+			overflow: auto;
+		}
+
+		@media screen and (max-width: 700px){
+			.box{
+				width: 70%;
+			}
+			.popup{
+				width: 70%;
+			}
+		}
+    </style>
+	
+</head>
+
+<body>
+<!-- This is the navbar that will be used for navigating between the views -->
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href="/">Music Store</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="/addmusic/form">Add Song</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/getsong">Search Song</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/listen">Listen</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/feedback">Feedback</a>
+				</li> 
+			</ul>
+		</div>  
+	</nav>
+	<br>
+	<!-- This is the actual form where the user will enter the song they would like to add-->
+    <div class="container">
+
+        <div class="container">
+            <br>
+            <br>
+
+            <div class="row align-items-center justify-content-center">
+                <h1>Add a Song</h1>
+            </div>
+            <br>
+			<!-- If submit button is pressed the form send a POST request to server and the python scrip on the backend will handle this request-->
+            <form method="POST">
+
+                <label for="song">Song Name</label>
+                <div class="form-row">
+                    <input class="form-control" type="text" placeholder="Name of song" id="song" name="song">
+                </div>
+                <br>
+                <div class="form-row">
+                    <label for="artist">Artist</label>
+                    <input class="form-control" type="text" placeholder="Artist Name" id="artist" name="artist">
+                </div>
+                <br>
+                <div class="form-row ">
+                    <label for="published">Published</label>
+                    <input class="form-control " type="date" placeholder="Published" id="published" name="published">
+                </div>
+
+                <br>
+				<button type="submit " class="btn btn-primary " style="float:right " onclick="location.href=&#39;#popup1&#39;">Submit</button>
+            
+            </form>
+			<!-- This popup code will be used to display a success message passed from the server-->
+			<div id="popup1" class="overlay">
+				<div class="popup">
+					<h2>Status Message</h2>
+					<a class="close" href="/addmusic/form">×</a>
+					<div class="content">
+						<p>{{ value }}</p> <!-- the value is sent from the server -->
+					</div>
+				</div>
+			</div>
+			
+            <br><br>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo "
+        crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js " integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 "
+        crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js " integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy "
+        crossorigin="anonymous "></script>
+</body>
+
+</html>
